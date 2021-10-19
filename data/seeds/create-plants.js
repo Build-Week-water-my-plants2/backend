@@ -3,7 +3,7 @@ exports.seed = function (knex) {
   return knex("plants")
     .insert({
       plant_name: 'Orchid',
-      species_name: 'Orchidaceae', // plain text password is 1234
+      species_name: 'Orchidaceae', 
       watering_freq: 'weekly',
       user_id: 1
     });
