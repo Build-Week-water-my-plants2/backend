@@ -21,8 +21,8 @@ server.use(express.json())
 server.use(helmet())
 server.use(cors())
 
-server.use('/api/users/', authRouter)
-server.use('/api/plants/', plantsRouter)
+server.use('/api/users', authRouter)
+server.use('/api/plants', plantsRouter)
 
 server.get('/api/users', async (req, res) => {
   res.json(await getAllUsers())

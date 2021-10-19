@@ -24,6 +24,7 @@ router.post('/login', checkUsernameExists, (req, res, next) => {
         const token = buildToken(req.user)
         res.status(200).json({
           message: `welcome, ${req.user.username}`,
+          user_id: `${req.user.user_id}`,
           token,
         })
       } else {
@@ -48,13 +49,15 @@ router.put('/update/:id', checkUsernameExists, async (req, res, next) => {
         const hash = bcrypt.hashSync(newPassword, 8)
         const updatedUser = { username, password: hash, phone }
         User.updateById(req.params.id, updatedUser)
-            .then(updUser => {
-                res.json(updUser)
+            .then( () => {
+                res.json({ message: 'User password updated'})
             })
             .catch(next)
     } else {
         next({ status: 401, message: 'invalid credentials' })
     }
 })
+
+
 
 module.exports = router;
