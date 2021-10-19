@@ -4,6 +4,7 @@ const cors = require('cors')
 const db = require('../data/db-config')
 
 const authRouter = require('./auth/auth-router')
+const plantsRouter = require('./plants/plants-router')
 
 function getAllUsers() { return db('users') }
 
@@ -21,6 +22,7 @@ server.use(helmet())
 server.use(cors())
 
 server.use('/api/users/', authRouter)
+server.use('/api/plants/', plantsRouter)
 
 server.get('/api/users', async (req, res) => {
   res.json(await getAllUsers())
