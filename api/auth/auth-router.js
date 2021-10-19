@@ -42,4 +42,19 @@ router.post('/login', checkUsernameExists, (req, res, next) => {
       }
 });
 
+router.put('/update/:id', checkUsernameExists, async (req, res, next) => {
+    const { username, password, newPassword, phone } = req.body
+    if(bcrypt.compareSync(password, req.user.password)){
+        const hash = bcrypt.hashSync(newPassword, 8)
+        const updatedUser = { username, password: hash, phone }
+        User.updateById(req.params.id, updatedUser)
+            .then(updUser => {
+                res.json(updUser)
+            })
+            .catch(next)
+    } else {
+        next({ status: 401, message: 'invalid credentials' })
+    }
+})
+
 module.exports = router;
