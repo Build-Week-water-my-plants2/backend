@@ -19,8 +19,15 @@ function findBy(filter) {
     .where(filter)
 }
 
+const updateById = async (id, user) => {
+    await db('users')
+        .update(user)
+        .where('user_id', id)
+    return findById(id)
+}
 module.exports = {
     findById,
     findBy,
     add,
+    updateById,
 }
