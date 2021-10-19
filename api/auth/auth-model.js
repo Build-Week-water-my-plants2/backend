@@ -2,7 +2,7 @@ const db = require('./../../data/db-config')
 
 async function add(user) {
     const [newUserObject] = await db('users')
-    .insert(user, ['user_id', 'username', 'password'])
+    .insert(user, ['user_id', 'username', 'password', 'phone'])
     return newUserObject
 }
 
