@@ -2,6 +2,8 @@
 
 ### API
 
+#### Base URL: https://web46-watermyplants2.herokuapp.com/
+
 #### Users(Auth) API
 
 - `[POST] /api/users/register` requires an object in format `{ username, password, phone}` and returns an object `{user_id, username, hashed password, phone}`
