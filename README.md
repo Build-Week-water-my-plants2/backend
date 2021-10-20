@@ -8,7 +8,7 @@
 
 - `[POST] /api/users/login` requires an object in format `{username, password}` and replies with an object in the format `{user_id, message, token}`
 
-- `[POST] /api/users/:id` requires an object in the format `{username, password, newPassword, phone}` (password must match the current user password) and returns the message `{ message: "User Password Updated" }`
+- `[PUT] /api/users/:id` requires an object in the format `{username, password, newPassword, phone}` (password must match the current user password) and returns the message `{ message: "User Password Updated" }`
 
 #### Plants API
 
