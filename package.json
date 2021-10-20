@@ -9,7 +9,12 @@
     "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback",
     "seed": "knex seed:run",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "migrateh": "heroku run knex migrate:latest -a web46-ft-water-my-plants2",
+    "rollbackh": "heroku run knex migrate:rollback -a web46-ft-water-my-plants2",
+    "databaseh": "heroku pg:psql -a web46-ft-water-my-plants2",
+    "seedh": "heroku run knex seed:run -a web46-ft-water-my-plants2",
+    "test": "cross-env NODE_ENV=testing jest --watchAll --verbose --runInBand",
+    "deploy": "git push heroku main"
   },
   "repository": {
     "type": "git",
